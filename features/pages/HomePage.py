@@ -18,5 +18,18 @@ class HomePage:
             EC.visibility_of_element_located((By.LINK_TEXT, text)))
         button.click()
 
+    def click_on_menu_item(self, text):
+        menu = WebDriverWait(self.driver, self.wait_time_in_seconds).until(
+            EC.element_to_be_clickable((By.LINK_TEXT, text)))
+        menu.click()
+
+    def click_on_submenu_item(self, text):
+        submenu = WebDriverWait(self.driver, self.wait_time_in_seconds).until(
+            EC.element_to_be_clickable((By.LINK_TEXT, text)))
+        submenu.click()
+
+    def get_header(self, class_name):
+        return self.driver.find_element(By.CLASS_NAME, class_name).text
+
     def get_page_title(self):
         return self.driver.title
