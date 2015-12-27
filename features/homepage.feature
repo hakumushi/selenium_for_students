@@ -7,6 +7,14 @@ Scenario:  Assert Home Screen Title
     When I open the home screen
     Then I must see the page title "Classe de Testes | Testes e Qualidade de Software"
 
-Scenario:  Assert Header Title
-    When I click on sub menu item "CURSO SELENIUM"
-    Then I must see the header title "Curso Selenium"
+Scenario:  Assert Curso Selenium Header Title
+    When I click on sub menu item "Curso Selenium"
+    Then I must see the header with css class "entry-title" and with title "Curso Selenium"
+
+Scenario:  Assert Formulário Simples Header Title
+    When I click on sub menu item "Formulário Simples"
+    Then I must see the header with css class "entry-title" and with title "Formulário Simples"
+
+Scenario:  Assert Formulário Simples Header Title
+    When I search for "teste"
+    Then I must see the header with css class "page-title" and with title "Resultados da pesquisa por: teste"
