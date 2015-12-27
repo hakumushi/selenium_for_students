@@ -15,7 +15,7 @@ Executar os seguintes comandos
 
 `cd selenium_for_students`
 
-Linux: `source bin/activate`
+Linux/ Mac OS: `source bin/activate`
 
 Windows: `Scripts\activate`
 
