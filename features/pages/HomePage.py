@@ -8,7 +8,6 @@ class HomePage:
     wait_time_in_seconds = 5
     hidden_options_button = "a.widget-handle.genericon"
     search_field = "s"
-    enter_button = "\uE006"
 
     def __init__(self, driver):
         self.driver = driver
@@ -36,7 +35,7 @@ class HomePage:
             EC.visibility_of_element_located((By.NAME, self.search_field)))
         field.clear()
         field.send_keys(text)
-        field.send_keys(self.enter_button)
+        field.send_keys(Keys.RETURN)
 
     def get_header(self, class_name):
         return self.driver.find_element(By.CLASS_NAME, class_name).text
