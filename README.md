@@ -1,5 +1,3 @@
-# selenium_for_students
-
 ##Requisitos de ambiente:
 
 - [Python 3.4](https://www.python.org/downloads/release/python-344/)
