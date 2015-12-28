@@ -5,9 +5,9 @@ from selenium.webdriver.common.by import By
 
 class HomePage:
     URL='http://www.classedetestes.wordpress.com'
-    wait_time_in_seconds = 5
-    hidden_options_button = "a.widget-handle.genericon"
-    search_field = "s"
+    WAIT_TIME_IN_SECONDS = 5
+    HIDDEN_OPTIONS_BUTTON = "a.widget-handle.genericon"
+    SEARCH_FIELD = "s"
 
     def __init__(self, driver):
         self.driver = driver
@@ -15,24 +15,14 @@ class HomePage:
     def open_url(self):
         self.driver.get(self.URL)
 
-    def click_on_menu_item(self, text):
-        menu = WebDriverWait(self.driver, self.wait_time_in_seconds).until(
-            EC.element_to_be_clickable((By.LINK_TEXT, text)))
+    def click_on_link(self, selector):
+        menu = WebDriverWait(self.driver, self.WAIT_TIME_IN_SECONDS).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, selector)))
         menu.click()
 
-    def click_on_submenu_item(self, text):
-        submenu = WebDriverWait(self.driver, self.wait_time_in_seconds).until(
-            EC.element_to_be_clickable((By.LINK_TEXT, text.upper())))
-        submenu.click()
-
-    def open_hidden_options(self):
-        field = WebDriverWait(self.driver, self.wait_time_in_seconds).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, self.hidden_options_button)))
-        field.click()
-
     def search_for(self, text):
-        field = WebDriverWait(self.driver, self.wait_time_in_seconds).until(
-            EC.visibility_of_element_located((By.NAME, self.search_field)))
+        field = WebDriverWait(self.driver, self.WAIT_TIME_IN_SECONDS).until(
+            EC.visibility_of_element_located((By.NAME, self.SEARCH_FIELD)))
         field.clear()
         field.send_keys(text)
         field.send_keys(Keys.RETURN)

@@ -1,8 +1,11 @@
 from pages.HomePage import HomePage
 from hamcrest import assert_that, equal_to
 
-home_menu_item = "HOME"
-selenium_menu_item = "SELENIUM"
+HOME_MENU_ITEM = '#menu-item-103'
+CSS_SELENIUM = '#menu-item-6 > a'
+CSS_CURSO_SELENIUM = '#menu-item-52'
+CSS_FORMULARIO = '#menu-item-51'
+HIDDEN_OPTIONS_BUTTON = "a.widget-handle.genericon"
 
 @given(u'I am on Home Page')
 def step_impl(context):
@@ -11,16 +14,21 @@ def step_impl(context):
 
 @when(u'I open the home screen')
 def step_impl(context):
-    context.page_object.click_on_menu_item(home_menu_item)
+    context.page_object.click_on_link(HOME_MENU_ITEM)
 
-@when(u'I click on sub menu item "{sub_menu_item}"')
-def step_impl(context, sub_menu_item):
-    context.page_object.click_on_menu_item(selenium_menu_item)
-    context.page_object.click_on_submenu_item(sub_menu_item)
+@when(u'I click on sub menu item Curso Selenium')
+def step_impl(context):
+    context.page_object.click_on_link(CSS_SELENIUM)
+    context.page_object.click_on_link(CSS_CURSO_SELENIUM)
+
+@when(u'I click on sub menu item Formulário Simples')
+def step_impl(context):
+    context.page_object.click_on_link(CSS_SELENIUM)
+    context.page_object.click_on_link(CSS_FORMULARIO)
 
 @when(u'I search for "{text}"')
 def step_impl(context, text):
-    context.page_object.open_hidden_options()
+    context.page_object.click_on_link(HIDDEN_OPTIONS_BUTTON)
     context.page_object.search_for(text)
 
 @then(u'I must see the page title "{title}"')
