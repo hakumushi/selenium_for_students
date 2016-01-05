@@ -21,7 +21,7 @@ def step_impl(context):
     context.page_object.click_on_link(CSS_SELENIUM)
     context.page_object.click_on_link(CSS_CURSO_SELENIUM)
 
-@when(u'I click on sub menu item Formulário Simples')
+@when(u'I click on sub menu item Formulario Simples')
 def step_impl(context):
     context.page_object.click_on_link(CSS_SELENIUM)
     context.page_object.click_on_link(CSS_FORMULARIO)

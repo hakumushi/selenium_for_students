@@ -9,20 +9,20 @@ class HomePage:
     HIDDEN_OPTIONS_BUTTON = "a.widget-handle.genericon"
     SEARCH_FIELD = "s"
 
+
     def __init__(self, driver):
         self.driver = driver
+        self.wait = WebDriverWait(driver, self.WAIT_TIME_IN_SECONDS)
 
     def open_url(self):
         self.driver.get(self.URL)
 
     def click_on_link(self, selector):
-        menu = WebDriverWait(self.driver, self.WAIT_TIME_IN_SECONDS).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, selector)))
+        menu = self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, selector)))
         menu.click()
 
     def search_for(self, text):
-        field = WebDriverWait(self.driver, self.WAIT_TIME_IN_SECONDS).until(
-            EC.visibility_of_element_located((By.NAME, self.SEARCH_FIELD)))
+        field = self.wait.until(EC.visibility_of_element_located((By.NAME, self.SEARCH_FIELD)))
         field.clear()
         field.send_keys(text)
         field.send_keys(Keys.RETURN)
