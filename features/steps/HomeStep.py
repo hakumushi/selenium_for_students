@@ -14,9 +14,11 @@ def step_impl(context):
 
 @when(u'I click on sub menu item Curso Selenium')
 def step_impl(context):
-    context.page_object.click_on_selenium_link()
-    context.page_object.click_on_curso_selenium_link()
-    context.utils.take_a_screenshot()
+    try:
+        context.page_object.click_on_selenium_link()
+        context.page_object.click_on_curso_selenium_link()
+    except:
+        context.utils.take_a_screenshot('Error')
 
 @when(u'I click on sub menu item Formulario Simples')
 def step_impl(context):

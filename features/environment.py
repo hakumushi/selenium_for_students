@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
-__author__ = 'Paulo Franca'
-
 from selenium import webdriver
+from util.Utils import Utils
 import os
 
 def before_all(context):
@@ -9,6 +7,10 @@ def before_all(context):
     #context.driver = webdriver.Firefox()
     context.driver.implicitly_wait(30)
     context.driver.maximize_window()
+    context.utils = Utils(context.driver)
+
+def after_scenario(context, scenario):
+    context.utils.take_a_screenshot('Teste')
 
 def after_all(context):
     context.driver.close()
