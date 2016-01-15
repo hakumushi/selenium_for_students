@@ -2,57 +2,46 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
+from pages.BasePage import BasePage
 
-class HomePage:
+class HomePage(BasePage):
     URL='http://www.classedetestes.wordpress.com'
-    WAIT_TIME_IN_SECONDS = 5
-    HIDDEN_OPTIONS_BUTTON = "a.widget-handle.genericon"
-    SEARCH_FIELD = "s"
-    HOME_MENU_ITEM = '#menu-item-103'
-    CSS_SELENIUM = '#menu-item-6 > a'
-    CSS_CURSO_SELENIUM = '#menu-item-52'
-    CSS_FORMULARIO = '#menu-item-51'
-    ENTRY_TITLE = 'entry-title'
-    PAGE_TITLE = 'page-title'
+    HIDDEN_OPTIONS_BUTTON = (By.CSS_SELECTOR, "a.widget-handle.genericon")
+    SEARCH_FIELD = (By.NAME, "s")
+    HOME_MENU_ITEM = (By.CSS_SELECTOR, '#menu-item-103')
+    CSS_SELENIUM = (By.CSS_SELECTOR, '#menu-item-6 > a')
+    CSS_CURSO_SELENIUM = (By.CSS_SELECTOR, '#menu-item-52')
+    CSS_FORMULARIO = (By.CSS_SELECTOR, '#menu-item-51')
+    ENTRY_TITLE = (By.CLASS_NAME, 'entry-title')
+    PAGE_TITLE = (By.CLASS_NAME, 'page-title')
 
-    def __init__(self, driver):
-        self.driver = driver
-        self.wait = WebDriverWait(driver, self.WAIT_TIME_IN_SECONDS)
-
-    def open_url(self):
-        self.driver.get(self.URL)
-
-    def click_on_home_screen_link(self):
-        menu = self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.HOME_MENU_ITEM)))
-        menu.click()
-
-    def click_on_selenium_link(self):
-        menu = self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.CSS_SELENIUM)))
-        menu.click()
-
-    def click_on_curso_selenium_link(self):
-        menu = self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.CSS_CURSO_SELENIUM)))
-        menu.click()
-
-    def click_on_formulario_link(self):
-        menu = self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.CSS_FORMULARIO)))
-        menu.click()
-
-    def open_hidden_options(self):
-        menu = self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.HIDDEN_OPTIONS_BUTTON)))
-        menu.click()
-
-    def search_for(self, text):
-        field = self.wait.until(EC.visibility_of_element_located((By.NAME, self.SEARCH_FIELD)))
-        field.clear()
-        field.send_keys(text)
-        field.send_keys(Keys.RETURN)
-
-    def get_header_of_a_entry_title(self):
-        return self.driver.find_element(By.CLASS_NAME, self.ENTRY_TITLE).text
-
-    def get_header_of_a_page_title(self):
-        return self.driver.find_element(By.CLASS_NAME, self.PAGE_TITLE).text
+    def open_classedetestes(self):
+        super().open_url(self.URL)
 
     def get_page_title(self):
-        return self.driver.title
+        return super().get_title()
+
+    def click_on_home_screen_link(self):
+        super().click(self.HOME_MENU_ITEM)
+
+    def click_on_selenium_link(self):
+        super().click(self.CSS_SELENIUM)
+
+    def click_on_curso_selenium_link(self):
+        super().click(self.CSS_CURSO_SELENIUM)
+
+    def click_on_formulario_link(self):
+        super().click(self.CSS_FORMULARIO)
+
+    def open_hidden_options(self):
+        super().click(self.HIDDEN_OPTIONS_BUTTON)
+
+    def search_for(self, text):
+        super().type_in(self.SEARCH_FIELD,text)
+        super().type_in(self.SEARCH_FIELD,Keys.RETURN, False)
+
+    def get_header_of_a_entry_title(self):
+        return super().find(self.ENTRY_TITLE).text
+
+    def get_header_of_a_page_title(self):
+        return super().find(self.PAGE_TITLE).text

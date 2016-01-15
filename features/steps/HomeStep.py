@@ -5,7 +5,7 @@ from hamcrest import assert_that, equal_to
 @given(u'I am on Home Page')
 def step_impl(context):
     context.page_object = HomePage(context.driver)
-    context.page_object.open_url()
+    context.page_object.open_classedetestes()
     context.utils = Utils(context.driver)
 
 @when(u'I open the home screen')
