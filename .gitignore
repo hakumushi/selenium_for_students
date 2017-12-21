@@ -1,2 +1,10 @@
 __pycache__
-feature/resources
+/features/resources/chromedriver
+/bin
+/features/pages/__pycache__
+/features/geckodriver.log
+/include
+/lib
+/selenium
+.Python
+pip-selfcheck.json

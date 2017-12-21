@@ -1,26 +1,16 @@
-##Requisitos de ambiente:
+# Selenium for Students
+Tradução para BDD/Python do projeto do curso Automação de Testes para Web com Selenium do C.E.S.A.R.
 
-- [Python 3.4](https://www.python.org/downloads/release/python-344/)
-- [virtualenv](https://virtualenv.readthedocs.org/en/latest/installation.html)
+
+## Requisitos
+
+1. [Python 3](https://www.python.org/downloads/)
+2. [chromedriver](https://sites.google.com/a/chromium.org/chromedriver/downloads)
     
-##Preparação do ambiente:
+## Passos
 
-O chromedriver deste projeto funciona apenas em ambientes Linux x64, baixe a versão correta do chromedriver para seu sistema operacional [aqui](http://chromedriver.storage.googleapis.com/index.html?path=2.20/).
-
-Executar os seguintes comandos
-
-`git clone https://github.com/Mushi720/selenium_for_students.git`
-
-`virtualenv selenium_for_students`
-
-`cd selenium_for_students`
-
-Linux/ Mac OS: `source bin/activate`
-
-Windows: `Scripts\activate`
-
-`pip install -r requirements.txt`
-
-Para executar a feature:
-
-`behave`
+1. Clone o projeto
+2. Instale as libs (pip install -r requirements.txt)
+3. Acesse a pasta features pelo terminal
+4. Crie uma pasta resources e mova o arquivo chromedriver para ela
+5. Execute o comando behave ou behave homepage.feature

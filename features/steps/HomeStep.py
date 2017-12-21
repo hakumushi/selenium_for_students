@@ -1,12 +1,10 @@
 from pages.HomePage import HomePage
-from util.Utils import Utils
 from hamcrest import assert_that, equal_to
 
 @given(u'I am on Home Page')
 def step_impl(context):
     context.page_object = HomePage(context.driver)
     context.page_object.open_classedetestes()
-    context.utils = Utils(context.driver)
 
 @when(u'I open the home screen')
 def step_impl(context):
@@ -14,11 +12,8 @@ def step_impl(context):
 
 @when(u'I click on sub menu item Curso Selenium')
 def step_impl(context):
-    try:
-        context.page_object.click_on_selenium_link()
-        context.page_object.click_on_curso_selenium_link()
-    except:
-        context.utils.take_a_screenshot('Error')
+    context.page_object.click_on_selenium_link()
+    context.page_object.click_on_curso_selenium_link()
 
 @when(u'I click on sub menu item Formulario Simples')
 def step_impl(context):

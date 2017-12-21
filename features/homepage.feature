@@ -6,7 +6,7 @@ Given I am on Home Page
 @suite1
 Scenario:  Assert Home Screen Title
     When I open the home screen
-    Then I must see the page title "Classe de Testes | Testes e Qualidade de Software"
+    Then I must see the page title "Classe de Testes – Testes e Qualidade de Software"
 
 @suite1
 Scenario:  Assert Curso Selenium Header Title
